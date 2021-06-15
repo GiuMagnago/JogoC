@@ -1,9 +1,7 @@
-# JogoC
+JOGO EM C++
 
-SALVE GIU!
+Algoritimos e Estrutura de Dados
 
-#1 Commit
+Giuseppe Chaves Magnago
 
-SALVE LENTAH!
-
-#2 Commit
+Pedro Tolentino Gontijo
