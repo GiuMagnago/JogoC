@@ -2,7 +2,7 @@
 
 //Declaração das "class" humanos
 
-//características do guerreiro
+//características do Guerreiro
 class Guerreiro {
     private:
         int pts_vida = 4000;
@@ -14,7 +14,7 @@ class Guerreiro {
         int agilidade = 20;
 }
 
-//características do ladrão
+//características do Ladrão
 class Ladrao {
     private:
         int pts_vida = 2800;
@@ -26,7 +26,7 @@ class Ladrao {
         int agilidade = 80;
 }
 
-//características do mago
+//características do Mago
 class Mago {
     private:
         int pts_vida = 2500;
@@ -38,7 +38,7 @@ class Mago {
         int agilidade = 40;
 }
 
-//características do paladino
+//características do Paladino
 class Paladino {
     private:
         int pts_vida = 3200;
@@ -52,7 +52,7 @@ class Paladino {
 
 //Declaração das "class" não humanos
 
-//características do animal
+//características do Animal
 class Animal {
     private:
         int pts_vida = 3200;
@@ -64,7 +64,7 @@ class Animal {
         int agilidade = 50;
 }
 
-//características do troll
+//características do Troll
 class Troll {
     private:
         int pts_vida = 2800;
@@ -76,7 +76,7 @@ class Troll {
         int agilidade = 20;
 }
 
-//características do dragão
+//características do Dragão
 class Dragao {
     private:
         int pts_vida = 3000;
@@ -89,7 +89,7 @@ class Dragao {
     
 }
 
-//características do zumbi
+//características do Zumbi
 class Zumbi {
     private:
         int pts_vida = 2500;
@@ -104,6 +104,7 @@ class Zumbi {
 
 //Declaração das "class" das magias
 
+//características da Poção de Vida
 class pocaoDeVida {
     private:
         int dano = 0;
@@ -111,6 +112,7 @@ class pocaoDeVida {
         int gst_mana = 12;
 }
 
+//características do Hálito de Fogo
 class halitoDeFogo {
     private:
         int dano = 400;
@@ -118,6 +120,7 @@ class halitoDeFogo {
         int gst_mana = 12;
 }
 
+//características do Bio
 class Bio {
     private:
         int dano = 360;
@@ -125,6 +128,7 @@ class Bio {
         int gst_mana = 14;
 }
 
+//características da Cura
 class Cura {
     private:
         int dano = 0;
@@ -132,6 +136,7 @@ class Cura {
         int gst_mana = 16;
 }
 
+//características da Flama Gelada
 class FlamaGelada {
     private:
         int dano = 320;
@@ -139,6 +144,7 @@ class FlamaGelada {
         int gst_mana = 14;
 }
 
+//características da Intoxicação
 class Intoxicacao {
     private:
         int dano = 280;
@@ -146,6 +152,7 @@ class Intoxicacao {
         int gst_mana = 12;
 }
 
+//características da Tempestade
 class Tempestade {
     private:
         int dano = 200;
