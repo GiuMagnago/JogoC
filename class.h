@@ -102,7 +102,11 @@ class Zumbi {
     
 }
 
+
+
 //Declaração das "class" das magias
+
+
 
 //características da Poção de Vida
 class pocaoDeVida {
