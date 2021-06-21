@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
 
-class Inumanos {
+class Personagens {
     public:
         int pontosV;
         int pontosM;
@@ -12,9 +12,13 @@ class Inumanos {
         int agilidade;
 };
 
-class Classes:public Inumanos {
+class Classes:public Personagens {
     public:
-        Classes();
+        void Classes();
+        void Guerreiro();
+        void Ladrao();
+        void Mago();
+        void Paladino();
         void Animal();
         void Troll();
         void Dragao();
