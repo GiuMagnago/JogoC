@@ -2,7 +2,7 @@
 using namespace std;
 
 class Personagens {
-    public:
+    protected:
         int pontosV;
         int pontosM;
         int forcaF;
@@ -12,21 +12,26 @@ class Personagens {
         int agilidade;
 };
 
-class Classes:public Personagens {
+class Classes : public Personagens {
     public:
-        void Classes();
-        void Guerreiro();
-        void Ladrao();
-        void Mago();
-        void Paladino();
-        void Animal();
-        void Troll();
-        void Dragao();
-        void Zumbi();
-        void escolherClasse();
+        Classes();
+        Guerreiro();
+        Ladrao();
+        Mago();
+        Paladino();
+        Animal();
+        Troll();
+        Dragao();
+        Zumbi();
+        escolherClasse();
 };
 
-Classes::Classes() {
+
+
+
+
+
+Classes::Classes() : Personagens() {
     pontosV = 0;
     pontosM = 0;
     forcaF = 0;
@@ -36,7 +41,7 @@ Classes::Classes() {
     agilidade = 0;
 }
 
-void Classes::Guerreiro() {
+Classes::Guerreiro() : Personagens() {
     pontosV = 4000;
     pontosM = 30;
     forcaF = 100;
@@ -44,9 +49,9 @@ void Classes::Guerreiro() {
     armadura = 80;
     resistencia = 20;
     agilidade = 20;
-};
+}
 
-void Classes::Ladrao() {
+Classes::Ladrao() : Personagens() {
     pontosV = 2800;
     pontosM = 50;
     forcaF = 50;
@@ -54,9 +59,9 @@ void Classes::Ladrao() {
     armadura = 40;
     resistencia = 50;
     agilidade = 80;
-};
+}
 
-void Classes::Mago() {
+Classes::Mago() : Personagens() {
     pontosV = 2500;
     pontosM = 100;
     forcaF = 40;
@@ -64,19 +69,19 @@ void Classes::Mago() {
     armadura = 30;
     resistencia = 80;
     agilidade = 40;
-};
+}
 
-void Classes::Paladino() {
-    pontosV = 2500;
-    pontosM = 100;
-    forcaF = 40;
-    forcaM = 100;
-    armadura = 30;
-    resistencia = 80;
-    agilidade = 40;
-};
+Classes::Paladino() : Personagens() {
+    pontosV = 3200;
+    pontosM = 80;
+    forcaF = 60;
+    forcaM = 50;
+    armadura = 60;
+    resistencia = 60;
+    agilidade = 60;
+}
 
-void Classes::Animal() {
+Classes::Animal() : Personagens() {
     pontosV = 3200;
     pontosM = 30;
     forcaF = 80;
@@ -84,9 +89,9 @@ void Classes::Animal() {
     armadura = 80;
     resistencia = 20;
     agilidade = 50;
-};
+}
 
-void Classes::Troll() {
+Classes::Troll() : Personagens() {
     pontosV = 2800;
     pontosM = 20;
     forcaF = 100;
@@ -94,9 +99,9 @@ void Classes::Troll() {
     armadura = 80;
     resistencia = 20;
     agilidade = 20;
-};
+}
 
-void Classes::Dragao() {
+Classes::Dragao() : Personagens() {
     pontosV = 3000;
     pontosM = 40;
     forcaF = 100;
@@ -104,9 +109,9 @@ void Classes::Dragao() {
     armadura = 50;
     resistencia = 50;
     agilidade = 30;
-};
+}
 
-void Classes::Zumbi() {
+Classes::Zumbi() : Personagens() {
     pontosV = 2500;
     pontosM = 20;
     forcaF = 40;
@@ -114,4 +119,4 @@ void Classes::Zumbi() {
     armadura = 40;
     resistencia = 80;
     agilidade = 50;
-};
+}
