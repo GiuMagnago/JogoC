@@ -5,7 +5,9 @@
 
 using namespace std;
 
+//Contrutor é chamado recebendo como parâmetro o código da opção de personagem escolhida pelo usuário
 Personagens::Personagens(int cod) {
+    //inicializa as variáveis de atributos dos personagens
     pontosV = 0;
     pontosM = 0;
     forcaF = 0;
@@ -14,6 +16,7 @@ Personagens::Personagens(int cod) {
     resistencia = 0;
     agilidade = 0;
 
+    //chama a função de acordo com o código escolhido, a função chamada atualizará o valor dos atributos de acordo com os atributos do personagem correspondente àquele código
     if (cod == 1)
     {
         Guerreiro();
@@ -48,6 +51,18 @@ Personagens::Personagens(int cod) {
     }
 }
 
+
+/*
+Funções que atualizarão os valores do atributos de acordo com o código escolhido
+
+Os vetores "magias" e "armas" serão alterados da seguinte maneira:
+
+Ex: Guerreiro pode usar somente a última magia da ordem (ordem da tabela do documento), então no vetor de magia do 
+guerreiro estará preenchido somente a última posição, as posições que estão com o valor "0" representam as magias 
+que ele não pode usar. O mesmo funciona para as armas.
+
+*** O exemplo citado acima funciona do mesmo jeito para todos os personagens. ***
+*/
 void Personagens::Guerreiro() {
     pontosV = 4000;
     pontosM = 30;
@@ -57,8 +72,8 @@ void Personagens::Guerreiro() {
     resistencia = 20;
     agilidade = 20;
 
-    int magiasAcessiveis[7] = {0, 0, 0, 0, 0, 0, 7};
-    int armasAcessiveis[7] = {0, 0, 3, 4, 0, 0, 0};
+    magias[] = {0, 0, 0, 0, 0, 0, 7};
+    armas[] = {0, 0, 3, 4, 0, 0, 0};
 }
 
 void Personagens::Ladrao() {
@@ -71,8 +86,8 @@ void Personagens::Ladrao() {
     agilidade = 80;
 
 
-    int magiasAcessiveis[7] = {0, 0, 0, 0, 0, 6, 7};
-    int armasAcessiveis[7] = {0, 0, 0, 4, 5, 6, 7};
+    magias[] = {0, 0, 0, 0, 0, 6, 7};
+    armas[] = {0, 0, 0, 4, 5, 6, 7};
 }
 
 void Personagens::Mago() {
@@ -85,8 +100,8 @@ void Personagens::Mago() {
     agilidade = 40;
 
 
-    int magiasAcessiveis[7] = {1, 0, 3, 4, 5, 6, 7};
-    int armasAcessiveis[7] = {0, 2, 0, 0, 5, 0, 0};
+    magias[] = {1, 0, 3, 4, 5, 6, 7};
+    armas[] = {0, 2, 0, 0, 5, 0, 0};
 }
 
 void Personagens::Paladino() {
@@ -99,8 +114,8 @@ void Personagens::Paladino() {
     agilidade = 60;
 
 
-    int magiasAcessiveis[7] = {1, 0, 0, 0, 5, 0, 7};
-    int armasAcessiveis[7] = {0, 2, 0, 0, 0, 6, 0};
+    magias[] = {1, 0, 0, 0, 5, 0, 7};
+    armas[] = {0, 2, 0, 0, 0, 6, 0};
 }
 
 void Personagens::Animal() {
@@ -113,8 +128,8 @@ void Personagens::Animal() {
     agilidade = 50;
 
 
-    int magiasAcessiveis[7] = {0, 0, 3, 0, 0, 0, 0};
-    int armasAcessiveis[7] = {1, 0, 0, 0, 0, 0, 0};
+    magias[] = {0, 0, 3, 0, 0, 0, 0};
+    armas[] = {1, 0, 0, 0, 0, 0, 0};
 }
 
 void Personagens::Troll() {
@@ -127,8 +142,8 @@ void Personagens::Troll() {
     agilidade = 20;
 
 
-    int magiasAcessiveis[7] = {0, 0, 0, 0, 0, 6, 0};
-    int armasAcessiveis[7] = {0, 0, 0, 4, 5, 0, 0};
+    magias[] = {0, 0, 0, 0, 0, 6, 0};
+    armas[] = {0, 0, 0, 4, 5, 0, 0};
 }
 
 void Personagens::Dragao() {
@@ -141,8 +156,8 @@ void Personagens::Dragao() {
     agilidade = 30;
 
 
-    int magiasAcessiveis[7] = {0, 2, 0, 0, 0, 0, 0};
-    int armasAcessiveis[7] = {1, 0, 0, 0, 0, 0, 0};
+    magias[] = {0, 2, 0, 0, 0, 0, 0};
+    armas[] = {1, 0, 0, 0, 0, 0, 0};
 }
 
 void Personagens::Zumbi() {
@@ -155,63 +170,195 @@ void Personagens::Zumbi() {
     agilidade = 50;
 
 
-    int magiasAcessiveis[7] = {0, 0, 0, 0, 0, 6, 0};
-    int armasAcessiveis[7] = {1, 0, 0, 4, 5, 0, 0};
+    magias[] = {0, 0, 0, 0, 0, 6, 0};
+    armas[] = {1, 0, 0, 4, 5, 0, 0};
 }
 
 
 
-int pocaoVida() {
+/*
+Com o usuário chamando uma magia, o programa checará se ela faz parte do deck de magias acessíveis por 
+aquele personagem, se ela for acessível, o programa chamará a função correspondente àquela magia e esta 
+retornará "attVida" (dano - cura) que posteriormente será calculado com a Resistência Mágica do personagem 
+e o valor final será subtraído dos Pontos de Vida do personagem.
+
+** Isso são somente exemplos, ainda têm que pôr na conta resistencia do personagem na hora de receber dano, fiz o exemplo só para explicar como funciona **
+
+Ex1 (dano): 
+    Dano = 400;
+    Cura = 0;
+    Pontos de Vida = 3000;
+
+    Após o uso da magia:
+        Pontos de Vida = 3000 - attVida(400 - 0);
+        Pontos de Vida = 3000 - 400;
+        Pontos de Vida = 2600;
+
+Ex2 (cura):
+    Dano = 0;
+    Cura = 200;
+    Pontos de Vida = 3000;
+
+    Após o uso da magia:
+        Pontos de Vida = 3000 - attVida(0 - 200);
+        Pontos de Vida = 3000 - (-200);
+        Pontos de Vida = 3000 + 200;
+        Pontos de Vida = 3200;
+
+Além disso, a variável que representa os Pontos de Mana do personagem será passada como parâmetro por referência para a função 
+a qual irá subtrair do pontos de mana o custo de mana da magia.
+
+OBS: O programa checará primeiro se o usuário possui mana o suficiente para realizar a conjuração, caso tenha ele realiza normalmente, 
+caso não, será retornado 0 e será exibida uma mensagem na tela.
+*/
+
+int pocaoVida(int &pontosM) {
     int dano = 0;
     int cura = 200;
+
     int gastoMana = 12;
 
-    return cura;
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
-int halitoFogo() {
+
+int halitoFogo(int &pontosM) {
     int dano = 400;
     int cura = 0;
+
     int gastoMana = 12;
 
-    return dano;
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
-int bio() {
+
+int bio(int &pontosM) {
     int dano = 360;
     int cura = 0;
+
     int gastoMana = 14;
 
-    return dano;
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
-int cura() {
+
+int cura(int &pontosM) {
     int dano = 0;
     int cura = 400;
-    int gastoMana = 16;
 
-    return cura;
+    int gastoMana = 16;
+    
+    
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
-int flamaGelada() {
+
+int flamaGelada(int &pontosM) {
     int dano = 320;
     int cura = 0;
-    int gastoMana = 14;
 
-    return dano;
+    int gastoMana = 14;
+    
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
-int intoxicacao() {
+
+int intoxicacao(int &pontosM) {
     int dano = 280;
     int cura = 0;
-    int gastoMana = 12;
 
-    return dano;
+    int gastoMana = 12;
+    
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
-int tempestade() {
+
+int tempestade(int &pontosM) {
     int dano = 200;
     int cura = 0;
-    int gastoMana = 12;
 
-    return dano;
+    int gastoMana = 12;
+    
+    if (gastoMana > pontosM)
+    {
+        cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
+        return 0;
+    }
+
+    pontosM -= gastoMana;
+
+    int attVida = dano - cura;
+
+    return attVida;
 }
 
 
+
+/*
+Com o usuário chamando uma arma, o programa checará se ela faz parte do deck de armas acessíveis por 
+aquele personagem, se ela for acessível, o programa chamará a função correspondente àquela arma e esta 
+retornará o "dano" que posteriormente será calculado com a Resistência Física do personagem 
+e o valor final será subtraído dos Pontos de Vida do personagem.
+#######################################################################
+#######################################################################
+LENTAH E HIRO: Os valores que eu coloquei são a média do dano máximo e mínimo que estão na tabela, mas 
+se vocês quiserem criar um algoritmo que aumenta o valor da arma com o passar das rodadas, vocês que sabem, 
+só me avisem e não esqueçam de apagar este aviso até a linha 356 após lerem.
+*/
 
 int Personagens::garraLetal() {
     int dano = 200;
@@ -249,7 +396,42 @@ int Personagens::esferaAtaque() {
     return dano;
 }
 
+/*
+############################################################################
 
+Em relação à benção de Bul-Kathos, fazer um algoritmo (coisa simples), 
+que permite que o uso da espada após conseguir ela no dado seja por 
+somente uma rodada atualizando o valor de dano do personagem, após a 
+rodada, para o valor inicialmente calculado.
+
+Ex: 
+    Rodada 1:
+        Guerreiro - Espada Barroca;
+        Dano = Dano da Arma + Porcentagem de Força Física o Personagem;
+        Dano = 400 + 100%;
+        Dano = 800;
+
+    Rodada 2: 
+        Guerreiro - (recebe a Benção de Bul-Kathos) Espada Lendária
+        Dano = Dano da Arma + Porcentagem de Força Física o Personagem;
+        Dano = 1400 (700 + 100% de Crítico = 1400) + 100%;
+        Dano = 2800;
+
+    Rodada 3:
+        Guerreiro - Espada Barroca;
+        Dano = Dano da Arma + Porcentagem de Força Física o Personagem;
+        Dano = 400 + 100%;
+        Dano = 800;
+
+############################################################################
+
+*/
+
+
+/*
+Função que, caso o usuário queira, roda o dado, caso seja sorteado um número de 1 a 100, caso o número 
+sorteado menor ou igual a 20 (20% de chance de conseguir) é chamada a função para calcular o dano da espada.
+*/
 int Personagens::dadoBulKathos() {
     unsigned seed = time(0);
     srand(seed);
@@ -258,7 +440,7 @@ int Personagens::dadoBulKathos() {
 
     if (dado >= 20)
     {
-        espadaKathos();
+        criticoKathos();
     }
     else
     {
@@ -266,8 +448,12 @@ int Personagens::dadoBulKathos() {
     }
 }
 
-
-int Personagens::espadaKathos() {
+/*
+Função que, caso o usuário consiga a espada lendária, calcula se o ataque vai ser crítico sorteando um número de 1 a 100, 
+caso o número seja menor ou igual a 30 (30% de chance de acerto crítico) é duplicado o dano da espada (acerto crítico = +100%) 
+e posteriormente esse valor é retornado.
+*/
+int Personagens::criticoKathos() {
     int danoKathos = 700;
 
     unsigned seed = time(0);
