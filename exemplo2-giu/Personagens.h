@@ -2,7 +2,6 @@
 
 using namespace std;
 
-//
 class Personagens {
     private:
         //declaração dos atributos dos personagens
