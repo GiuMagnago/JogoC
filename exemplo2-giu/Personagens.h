@@ -30,9 +30,6 @@ class Personagens {
         void Dragao();
         void Zumbi();
 
-
-
-
         //funções das magias, organizadas na ordem do vetor de magias
 
         int pocaoVida(); //posição "0" no vetor, valor "1"
@@ -42,9 +39,6 @@ class Personagens {
         int flamaGelada(); //posição "4" no vetor, valor "5"
         int intoxicacao(); //posição "5" no vetor, valor "6"
         int tempestade(); //posição "6" no vetor, valor "7"
-
-
-
 
         //funções das armas, organizadas na ordem do vetor de armas
 
@@ -56,10 +50,10 @@ class Personagens {
         int besta(); //posição "5" no vetor, valor "6"
         int esferaAtaque(); //posição "6" no vetor, valor "7"
 
-
         //funções para a espada lendária de Bul-Kathos
         int dadoBulKathos(); //caso o usuário deseje, rola o dado no inicio da rodada (20% de chance), caso ele consiga, ele usa a espada lendária por UMA RODADA
         int criticoKathos(); //caso o usuário consiga a espada lendária no dado, é sorteado se ele vai ter acerto crítico ou não (30% de chance)
+        
     public:
         //contrutor do personagem
         Personagens(int cod);
