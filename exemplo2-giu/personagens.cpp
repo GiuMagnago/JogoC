@@ -184,26 +184,13 @@ e o valor final será subtraído dos Pontos de Vida do personagem.
 
 ** Isso são somente exemplos, ainda têm que pôr na conta resistencia do personagem na hora de receber dano, fiz o exemplo só para explicar como funciona **
 
-Ex1 (dano): 
+Ex (dano): 
     Dano = 400;
     Cura = 0;
-    Pontos de Vida = 3000;
 
-    Após o uso da magia:
-        Pontos de Vida = 3000 - attVida(400 - 0);
-        Pontos de Vida = 3000 - 400;
-        Pontos de Vida = 2600;
-
-Ex2 (cura):
-    Dano = 0;
-    Cura = 200;
-    Pontos de Vida = 3000;
-
-    Após o uso da magia:
-        Pontos de Vida = 3000 - attVida(0 - 200);
-        Pontos de Vida = 3000 - (-200);
-        Pontos de Vida = 3000 + 200;
-        Pontos de Vida = 3200;
+    Portanto, o programa entrará na segunda condição (cura = 0) e com isso, será atribuído o valor negativo 
+    de dano à variável "attVida", e esta será enviada para a função recebeDano, para ser somada com a vida, ou seja, 
+    se for dano, o valor será reduzido dos pontos de vida, se for cura, será incrementado.
 
 Além disso, a variável que representa os Pontos de Mana do personagem será passada como parâmetro por referência para a função 
 a qual irá subtrair do pontos de mana o custo de mana da magia.
@@ -212,7 +199,7 @@ OBS: O programa checará primeiro se o usuário possui mana o suficiente para re
 caso não, será retornado 0 e será exibida uma mensagem na tela.
 */
 
-int pocaoVida(int &pontosM) {
+void pocaoVida(int &pontosV, int &pontosM) {
     int dano = 0;
     int cura = 200;
 
@@ -224,11 +211,8 @@ int pocaoVida(int &pontosM) {
         return 0;
     }
 
+    pontosV += cura;
     pontosM -= gastoMana;
-
-    int attVida = dano - cura;
-
-    return attVida;
 }
 
 int halitoFogo(int &pontosM) {
@@ -237,6 +221,8 @@ int halitoFogo(int &pontosM) {
 
     int gastoMana = 12;
 
+    int attVida = 0;
+
     if (gastoMana > pontosM)
     {
         cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
@@ -244,8 +230,15 @@ int halitoFogo(int &pontosM) {
     }
 
     pontosM -= gastoMana;
-
-    int attVida = dano - cura;
+    
+    if (dano == 0)
+    {
+        attVida = -dano;
+    }
+    else if (cura == 0)
+    {
+        attVida = cura;
+    }
 
     return attVida;
 }
@@ -256,6 +249,8 @@ int bio(int &pontosM) {
 
     int gastoMana = 14;
 
+    int attVida = 0;
+
     if (gastoMana > pontosM)
     {
         cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
@@ -264,29 +259,32 @@ int bio(int &pontosM) {
 
     pontosM -= gastoMana;
 
-    int attVida = dano - cura;
+    if (dano == 0)
+    {
+        attVida = -dano;
+    }
+    else if (cura == 0)
+    {
+        attVida = cura;
+    }
 
     return attVida;
 }
 
-int cura(int &pontosM) {
+void cura(int &pontosV, int &pontosM) {
     int dano = 0;
     int cura = 400;
 
     int gastoMana = 16;
     
-    
     if (gastoMana > pontosM)
     {
         cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
         return 0;
     }
 
+    pontosV += cura;
     pontosM -= gastoMana;
-
-    int attVida = dano - cura;
-
-    return attVida;
 }
 
 int flamaGelada(int &pontosM) {
@@ -294,6 +292,8 @@ int flamaGelada(int &pontosM) {
     int cura = 0;
 
     int gastoMana = 14;
+
+    int attVida = 0;
     
     if (gastoMana > pontosM)
     {
@@ -303,7 +303,14 @@ int flamaGelada(int &pontosM) {
 
     pontosM -= gastoMana;
 
-    int attVida = dano - cura;
+    if (dano = 0)
+    {
+        attVida == -dano;
+    }
+    else if (cura == 0)
+    {
+        attVida = cura;
+    }
 
     return attVida;
 }
@@ -314,6 +321,8 @@ int intoxicacao(int &pontosM) {
 
     int gastoMana = 12;
     
+    int attVida == 0;
+
     if (gastoMana > pontosM)
     {
         cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
@@ -322,7 +331,14 @@ int intoxicacao(int &pontosM) {
 
     pontosM -= gastoMana;
 
-    int attVida = dano - cura;
+    if (dano == 0)
+    {
+        attVida = -dano;
+    }
+    else if (cura == 0)
+    {
+        attVida = cura;
+    }
 
     return attVida;
 }
@@ -333,6 +349,8 @@ int tempestade(int &pontosM) {
 
     int gastoMana = 12;
     
+    int attVida = 0;
+
     if (gastoMana > pontosM)
     {
         cout << "\n***Você não tem mana suficiente para conjurar esta magia.***\n";
@@ -341,7 +359,14 @@ int tempestade(int &pontosM) {
 
     pontosM -= gastoMana;
 
-    int attVida = dano - cura;
+    if (dano = 0)
+    {
+        attVida = -dano;
+    }
+    else if (cura == 0)
+    {
+        attVida = cura;
+    }
 
     return attVida;
 }
@@ -467,4 +492,133 @@ int Personagens::criticoKathos() {
     }
 
     return danoKathos;
+}
+
+
+
+
+
+//chama a arma de acordo com o código inserido e retorna par a variável "danoAtaque" que posteriormente é passada por parâmetro como parâmentro para "recebeDano"
+int Personagens::escolheArma(int forcaF, int cod_arma) {
+
+    int dano;
+
+    if (cod_arma == 1)
+    {
+        dano = garraLetal();
+    }
+    else if (cod_arma == 2)
+    {
+        dano = tridenteSagrado();
+    }
+    else if (cod_arma == 3)
+    {
+        dano = espadaBarroca();
+    }
+    else if (cod_arma == 4)
+    {
+        dano = porrete();
+    }
+    else if (cod_arma == 5)
+    {
+        dano = cajado();
+    }
+    else if (cod_arma == 6)
+    {
+        dano = besta();
+    }
+    else if (cod_arma == 7)
+    {
+        dano = esferaAtaque();
+    }
+    else if (cod_arma == 8)
+    {
+        dano = dadoBulKathos();
+    }
+
+    return dano;
+}
+
+/*
+Chama a função da arma de acordo com o código inserido e retorna para a variável "danoMagia" (**** declarada, obrigatoriamente como "0" ****) 
+que posteriormente é passada por parâmetro para "recebeDano"
+*/
+int Personagens::escolheMagia(int &pontosV, int &pontosM, int forcaM, int cod_magia) {
+
+    int dano;
+
+    if (cod_magia == 1)
+    {
+        pocaoVida(pontosV, pontosM);
+    }
+    else if (cod_magia == 2)
+    {
+        dano = halitoFogo(pontosM);
+    }
+    else if (cod_magia == 3)
+    {
+        dano = bio(pontosM);
+    }
+    else if (cod_magia == 4)
+    {
+        cura(pontosV, pontosM);
+    }
+    else if (cod_magia == 5)
+    {
+        dano = flamaGelada(pontosM);
+    }
+    else if (cod_magia == 6)
+    {
+        dano = intoxicacao(pontosM);
+    }
+    else if (cod_magia == 7)
+    {
+        dano = tempestade(pontosM);
+    }
+
+    return dano;
+}
+
+
+
+//função que calcula a esquiva do personagem e retorna para "recebeDano"
+int Personagens::calculaEsquiva (int agil) {
+    unsigned seed = time(0);
+    srand(seed);
+
+    int esquiva = 1 + rand()%100;
+
+    return esquiva;
+}
+
+
+
+/*
+A variável "danoAtaque" é declarada como "0" e à ela é atribuida o valor do dano da arma escolhida, 
+caso tenha sido usada arma.
+
+A variável "danoMagia" é declarada como "0" e à ela é atribuida o valor do dano da magia escolhida, 
+caso tenha sido usada magia.
+*/
+void Personagens::recebeDano(int danoAtaque, int danoMagia, int &pontosV, int armor, int resist, int agil) {
+
+    int esquiva;
+
+    if (danoAtaque == 0)
+    {
+        pontosV -= danoMagia*(1 - resist/100);
+    }
+    else
+    {
+        esquiva = calculaEsquiva(agil);
+
+        if (esquiva <= agil)
+        {
+            cout << "\n***O oponente conseguiu se esquivar do seu ataque***\n";
+        }
+        else
+        {
+            pontosV -= danoAtaque*(1 - armor/100);
+        }
+    }
 }
